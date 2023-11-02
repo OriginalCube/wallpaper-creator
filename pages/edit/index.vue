@@ -1,5 +1,9 @@
 <template>
-  <h1>hello world!</h1>
+  <div class="w-full border-2 bg-red-300">qwe</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: "edit",
+});
+</script>

@@ -24,12 +24,14 @@
               @click=""
             />
           </NuxtLink>
-          <UButton
-            icon="i-mdi-newspaper-plus"
-            label="Create Wallpaper"
-            color="gray"
-            size="xl"
-          />
+          <NuxtLink to="/edit">
+            <UButton
+              icon="i-mdi-newspaper-plus"
+              label="Create Wallpaper"
+              color="gray"
+              size="xl"
+            />
+          </NuxtLink>
         </div>
       </div>
       <img src="/images/Engine_logo.gif" />
