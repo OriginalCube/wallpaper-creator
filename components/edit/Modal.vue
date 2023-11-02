@@ -16,6 +16,6 @@
 const onMount = ref(false);
 
 onMounted(() => {
-  onMount.value = true;
+  onMount.value = false;
 });
 </script>

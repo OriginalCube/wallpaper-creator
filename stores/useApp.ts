@@ -1,7 +1,9 @@
 export const useApp = defineStore("app", () => {
-  const isAdding = ref(false);
+  const sideContent = ref("add");
 
-  const changeAddingState = () => console.log("hello");
+  const changeAddingState = (e: string) => (sideContent.value = e);
 
-  return { isAdding, changeAddingState };
+  watch(sideContent, () => console.log(sideContent.value));
+
+  return { sideContent, changeAddingState };
 });
