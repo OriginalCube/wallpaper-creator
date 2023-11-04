@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full bg-red-300"></div>
+	<div class="w-full bg-slate-800"></div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "edit",
-});
+	layout: 'edit',
+})
 </script>

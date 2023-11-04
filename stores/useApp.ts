@@ -1,5 +1,5 @@
 export const useApp = defineStore("app", () => {
-  const sideContent = ref("add");
+  const sideContent = ref<string>("add");
 
   const changeAddingState = (e: string) => (sideContent.value = e);
 
