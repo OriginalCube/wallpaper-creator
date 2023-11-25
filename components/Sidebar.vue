@@ -5,6 +5,7 @@
 		<EditSideAction
 			v-if="section.length"
 			:data="SidePanelActions[app.sideContent][section]"
+			:section="section"
 		/>
 	</div>
 </template>
@@ -32,28 +33,30 @@ const SidePanelActions: SidePanel = {
 				action: () => (section.value = 'changeColor'),
 			},
 			{
-				icon: 'i-mdi-rename-box-outline',
+				icon: 'i-mdi-check-circle',
 				iconColor: 'white',
 				bgColor: 'black',
-				label: 'Customize Names',
-				action: () => console.log('hello world'),
+				label: 'Confirmation',
+				action: () => (section.value = 'confirm'),
 			},
 		],
 		addFiles: {
 			header: 'Upload',
 			fields: [
-				{ name: 'Song Name', type: 'text', value: 'name' },
 				{
-					name: 'Upload Song',
-					type: 'uploader',
-					positiveBtn: 'Upload',
-					action: () => console.log('upload'),
+					name: 'Customize song name',
+					type: 'text',
+					model: 'name',
 				},
 				{
-					name: 'Upload Image',
+					name: 'Song',
 					type: 'uploader',
-					positiveBtn: 'Upload',
-					action: () => console.log('upload'),
+					model: 'song',
+				},
+				{
+					name: 'Image',
+					type: 'uploader',
+					model: 'image',
 				},
 			],
 		},
@@ -63,19 +66,26 @@ const SidePanelActions: SidePanel = {
 				{
 					name: 'Background Color',
 					type: 'color',
+					model: 'background',
 					value: 'background',
 				},
 				{
 					name: 'Foreground Color',
 					type: 'color',
+					model: 'foreground',
 					value: 'foreground',
 				},
 				{
 					name: 'Text Color',
 					type: 'color',
+					model: 'textColor',
 					value: 'textColor',
 				},
 			],
+		},
+		confirm: {
+			header: 'Confirm Data',
+			type: 'confirmation',
 		},
 	},
 }

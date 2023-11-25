@@ -3,10 +3,8 @@ export type CustomField = {
 	fields: {
 		name: string
 		type: string
-		positiveBtn?: string | boolean
+		model: 'image' | 'song' | 'foreground' | 'background' | 'textColor' | 'name'
 		value?: string
-		store?: typeof ref
-		action?: () => void
 	}[]
 }
 
@@ -22,5 +20,6 @@ export type SidePanel = {
 		}[]
 		addFiles: CustomField
 		changeColor: CustomField
+		confirm: Object
 	}
 }

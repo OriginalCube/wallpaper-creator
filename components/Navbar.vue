@@ -1,5 +1,7 @@
 <template>
-	<div class="w-full h-16 flex items-center px-4 gap-6 bg-preset-primary">
+	<div
+		class="w-full h-16 flex items-center px-4 gap-6 bg-preset-primary border-b-[1px] border-preset-semantics"
+	>
 		<NuxtLink to="/">
 			<UButton
 				class="bg-preset-secondary text-preset-primary"
@@ -19,6 +21,13 @@
 			class="bg-preset-secondary text-preset-primary"
 			label="Check Song List"
 			icon="i-mdi-format-list-bulleted"
+			size="xl"
+			@click="changeAddingState('playlist')"
+		/>
+		<UButton
+			class="bg-preset-secondary text-preset-primary"
+			label="Change current sample"
+			icon="i-mdi-swap-horizontal"
 			size="xl"
 			@click="changeAddingState('playlist')"
 		/>
