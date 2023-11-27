@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"name": "Guitar, Loneliness and Blue Planet",
+		"background": "#4C2633",
+		"foreground": "#e81a5b",
+		"textColor": "#e81a5b"
+	},
+	{
+		"id": 2,
+		"name": "I want to be a constellation",
+		"background": "#580d22",
+		"foreground": "#e81a5b",
+		"textColor": "#e81a5b"
+	},
+	{
+		"id": 3,
+		"name": "That Band",
+		"background": "#0c3958",
+		"foreground": "#1a7cc3",
+		"textColor": "#1a7cc3"
+	}
+]

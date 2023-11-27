@@ -1,3 +1,4 @@
+import PresetData from '@/public/SongData.json'
 export const useCreate = defineStore('create', () => {
 	const toast = useToast()
 
@@ -26,7 +27,6 @@ export const useCreate = defineStore('create', () => {
 			list.value.push(songData)
 			songData.value = { ...initialValue }
 		} else {
-			console.log('toaster')
 			toast.add({ title: 'Complete all fields.' })
 		}
 		console.log(list.value)

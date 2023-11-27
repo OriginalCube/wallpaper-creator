@@ -1,9 +1,10 @@
-export const useApp = defineStore("app", () => {
-  const sideContent = ref<string>("add");
+export const useApp = defineStore('app', () => {
+	const sideContent = ref<string>('add')
+	const presetIndex = ref<number>(0)
 
-  const changeAddingState = (e: string) => (sideContent.value = e);
+	const changeAddingState = (e: string) => (sideContent.value = e)
 
-  watch(sideContent, () => console.log(sideContent.value));
+	watch(sideContent, () => console.log(sideContent.value))
 
-  return { sideContent, changeAddingState };
-});
+	return { sideContent, changeAddingState, presetIndex }
+})

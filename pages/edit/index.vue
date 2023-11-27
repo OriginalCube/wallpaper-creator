@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full bg-slate-800"></div>
+	<WallpaperMain />
 	<UNotifications />
 </template>
 
