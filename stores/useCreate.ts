@@ -11,7 +11,7 @@ export const useCreate = defineStore('create', () => {
 		background: '',
 		textColor: '',
 	}
-	const songData = reactive<any>({ ...initialValue })
+	const songData = ref<any>({ ...initialValue })
 
 	const list = ref([])
 
