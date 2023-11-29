@@ -4,20 +4,20 @@
 			v-for="n in 32"
 			ref="line"
 			:key="n"
-			:style="`width: ${lineWidth}px; marginRight: ${lineWidth}px; height: ${
-				lineHeight * Math.random()
-			}px;`"
-			:class="`bg-[${color}]`"
+			:style="
+				`width: ${lineWidth}px; marginRight: ${lineWidth}px; height: ${
+					lineHeight * Math.random()
+				}px; backgroundColor : ` + create.songData.foreground
+			"
+			:class="`bg-[${create.songData.background}]`"
 		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-import PresetData from '@/public/SongData.json'
 const create = useCreate()
 const app = useApp()
 
-const color = ref(PresetData[app.presetIndex].foreground)
 const visualizerRef = ref()
 const lineWidth = ref(0)
 const lineHeight = ref(0)

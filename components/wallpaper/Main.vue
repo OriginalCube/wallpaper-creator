@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="w-full h-full flex flex-col items-center justify-center"
-		:style="'background-color: ' + PresetData[app.presetIndex].background"
+		:style="'background-color: ' + create.songData.background"
 	>
 		<WallpaperVisualizer />
 		<img
@@ -16,5 +16,6 @@
 import PresetData from '@/public/SongData.json'
 
 const create = useCreate()
+watch(create.songData, () => console.log(create.songData))
 const app = useApp()
 </script>
