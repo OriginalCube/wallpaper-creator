@@ -6,10 +6,10 @@
 			class="dropzone w-11/12 flex items-center justify-center"
 			ref="dropRef"
 		/>
-		<p class="text-xl p-2" @click="console.log(create.songData)">
-			Name of file
-		</p>
-		<p class="text-md p-[1px]">
+		<p class="text-xl p-2">Name of file</p>
+		<p
+			class="text-md w-4/5 text-ellipsis text-center overflow-hidden h-auto p-[1px]"
+		>
 			{{ data.model ? create.songData[data.model] : 'unavailable' }}
 		</p>
 	</div>
@@ -24,6 +24,7 @@ const props = defineProps<{
 
 const create = useCreate()
 const dropRef = ref(null)
+const imageUrl = inject('imageUrl') as any
 
 onMounted(() => {
 	if (dropRef.value !== null) {
@@ -33,17 +34,28 @@ onMounted(() => {
 			uploadMultiple: false,
 			autoProcessQueue: false,
 			maxFilesize: 250, // MB
+			thumbnailHeight: 500,
+			thumbnailWidth: 500,
 			maxFiles: 1,
 			resizeMimeType: 'image/webp',
 			url: '_blank',
 			acceptedFiles: props.data.model === 'image' ? 'image/*' : 'audio/*',
 		})
 
-		dropzone.on('addedfile', (file) =>
+		dropzone.on('addedfile', (file: any) => {
+			if (props.data.model !== 'image')
+				useToast().add({
+					title: 'Success',
+					description: 'Only image files will be previewed.',
+				})
 			props.data.model
 				? (create.songData[props.data.model] = file.name)
-				: console.error('No model found.'),
-		)
+				: console.error('No model found.')
+		})
+
+		dropzone.on('thumbnail', (_, dataUri) => {
+			if (props.data.model === 'image') imageUrl.value = dataUri
+		})
 
 		dropzone.on('removedfile', () =>
 			props.data.model

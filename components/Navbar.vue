@@ -29,7 +29,7 @@
 			label="Change current sample"
 			icon="i-mdi-swap-horizontal"
 			size="xl"
-			@click="changeAddingState('playlist')"
+			@click="updateIndex"
 		/>
 		<UButton
 			class="bg-preset-secondary text-preset-primary"
@@ -41,5 +41,5 @@
 </template>
 
 <script lang="ts" setup>
-const { changeAddingState } = useApp()
+const { changeAddingState, updateIndex } = useApp()
 </script>
