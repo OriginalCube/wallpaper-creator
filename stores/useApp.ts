@@ -2,6 +2,7 @@ import PresetData from '@/public/SongData.json'
 export const useApp = defineStore('app', () => {
 	const sideContent = ref<string>('add')
 	const presetIndex = ref<number>(0)
+	const playlist = ref<boolean>(false)
 
 	const changeAddingState = (e: string) => (sideContent.value = e)
 
@@ -14,5 +15,16 @@ export const useApp = defineStore('app', () => {
 		}
 	}
 
-	return { sideContent, changeAddingState, presetIndex, updateIndex }
+	const displayPlaylist = () => {
+		playlist.value = !playlist.value
+	}
+
+	return {
+		sideContent,
+		changeAddingState,
+		presetIndex,
+		updateIndex,
+		displayPlaylist,
+		playlist,
+	}
 })

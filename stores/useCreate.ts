@@ -13,24 +13,30 @@ export const useCreate = defineStore('create', () => {
 	}
 	const songData = ref<any>({ ...initialValue })
 
-	const list = ref([])
+	const list = ref<any>([])
 
 	const missingData = (): boolean => {
-		for (const key in songData) {
-			if (songData[key] === '') return false
+		for (const key in songData.value) {
+			if (songData.value[key] === '') return false
 		}
 		return true
 	}
 
 	const addSong = () => {
-		if (missingData()) {
-			list.value.push(songData)
+		const isEmpty = missingData()
+		if (isEmpty) {
+			list.value.push(songData.value)
 			songData.value = { ...initialValue }
+			return true
 		} else {
 			toast.add({ title: 'Complete all fields.' })
 		}
-		console.log(list.value)
+		return false
 	}
 
-	return { songData, songIndex, addSong }
+	const removeSong = (id: number) => {
+		list.value = list.value.splice(id, 1)
+	}
+
+	return { songData, songIndex, addSong, list, removeSong }
 })

@@ -15,21 +15,21 @@
 			label="Add Song"
 			icon="i-mdi-book-plus"
 			size="xl"
-			@click="changeAddingState('add')"
+			@click="app.changeAddingState('add')"
 		/>
 		<UButton
 			class="bg-preset-secondary text-preset-primary"
 			label="Check Song List"
 			icon="i-mdi-format-list-bulleted"
 			size="xl"
-			@click="changeAddingState('playlist')"
+			@click="app.displayPlaylist"
 		/>
 		<UButton
 			class="bg-preset-secondary text-preset-primary"
 			label="Change current sample"
 			icon="i-mdi-swap-horizontal"
 			size="xl"
-			@click="updateIndex"
+			@click="app.updateIndex"
 		/>
 		<UButton
 			class="bg-preset-secondary text-preset-primary"
@@ -41,5 +41,5 @@
 </template>
 
 <script lang="ts" setup>
-const { changeAddingState, updateIndex } = useApp()
+const app = useApp()
 </script>

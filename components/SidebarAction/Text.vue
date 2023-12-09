@@ -3,7 +3,7 @@
 	<div class="w-full h-auto flex flex-col gap-2 items-center justify-center">
 		<p class="text-xl font-medium w-full p-2 px-4">{{ data.name }}</p>
 		<UInput
-			v-model="text"
+			v-model="create.songData[data.model]"
 			class="w-11/12 bg-preset-primary text-preset-semantics"
 		/>
 	</div>
@@ -11,9 +11,5 @@
 
 <script setup lang="ts">
 const create = useCreate()
-const props = defineProps<{ data: { name: string; model: 'name' } }>()
-
-const text = ref('')
-
-watch(text, () => (create.songData[props.data.model] = text.value))
+defineProps<{ data: { name: string; model: 'name' } }>()
 </script>

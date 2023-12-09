@@ -1,12 +1,26 @@
 <template>
-	<div class="w-1/3 h-full flex items-center">
+	<div class="w-1/3 h-full">
 		<EditModal />
-		<EditSidePanel :data="SidePanelActions[app.sideContent]" />
-		<EditSideAction
-			v-if="section.length"
-			:data="SidePanelActions[app.sideContent][section]"
-			:section="section"
+		<div class="w-full h-full flex items-center">
+			<EditSidePanel :data="SidePanelActions[app.sideContent]" />
+			<EditSideAction
+				v-if="section.length"
+				:data="SidePanelActions[app.sideContent][section]"
+				:section="section"
+			/>
+		</div>
+		<Playlist
+			v-if="app.playlist"
+			:deleteSong="() => (modalActions.delete = true)"
+			:updateSong="() => (modalActions.update = true)"
 		/>
+
+		<UModal v-model="actionModal" preventClose>
+			<SidebarActionConfirmation
+				v-if="modalActions.confirm"
+				:cancelConfirmation="closeModal"
+			/>
+		</UModal>
 	</div>
 </template>
 
@@ -14,6 +28,16 @@
 import type { SidePanel } from '@/utils/types'
 const app = useApp()
 const section = ref('addFiles')
+const actionModal = ref(false)
+
+const initialModalValue = { delete: false, update: false, confirm: false }
+
+const modalActions = reactive(initialModalValue)
+
+const closeModal = () => {
+	Object.assign(modalActions, initialModalValue)
+	actionModal.value = false
+}
 
 const SidePanelActions: SidePanel = {
 	add: {
@@ -37,7 +61,10 @@ const SidePanelActions: SidePanel = {
 				iconColor: 'white',
 				bgColor: 'black',
 				label: 'Confirmation',
-				action: () => (section.value = 'confirm'),
+				action: () => {
+					modalActions.confirm = true
+					actionModal.value = true
+				},
 			},
 		],
 		addFiles: {

@@ -25,7 +25,6 @@
 				</KeepAlive>
 			</div>
 		</div>
-		<SidebarActionConfirmation v-if="section === 'confirm'" />
 	</div>
 </template>
 

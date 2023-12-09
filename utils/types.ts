@@ -23,3 +23,12 @@ export type SidePanel = {
 		confirm: Object
 	}
 }
+
+export type songStructure = {
+	name: string
+	song: string
+	image: string
+	foreground: string
+	background: string
+	textColor: string
+}
