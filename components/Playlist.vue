@@ -9,7 +9,7 @@
 		<div class="h-72 w-full flex flex-col gap-4">
 			<div
 				class="flex items-center justify-center"
-				v-for="(song, index) in create.list"
+				v-for="(song, index) in items"
 				:key="index"
 			>
 				<div class="flex items-center justify-between gap-2 w-full">
@@ -31,7 +31,7 @@
 								size="sm"
 								square
 								variant="solid"
-								@click=""
+								@click="() => deleteSong(index)"
 						/></UTooltip>
 					</div>
 				</div>
@@ -43,5 +43,8 @@
 <script setup lang="ts">
 const app = useApp()
 const create = useCreate()
+
+const items = computed(() => create.list)
+
 defineProps<{ deleteSong: any; updateSong: any }>()
 </script>

@@ -11,7 +11,7 @@
 		</div>
 		<Playlist
 			v-if="app.playlist"
-			:deleteSong="() => (modalActions.delete = true)"
+			:deleteSong="deleteSong"
 			:updateSong="() => (modalActions.update = true)"
 		/>
 
@@ -19,6 +19,11 @@
 			<SidebarActionConfirmation
 				v-if="modalActions.confirm"
 				:cancelConfirmation="closeModal"
+			/>
+			<SidebarActionDeleteSong
+				v-if="modalActions.delete"
+				:deleteId="deleteId"
+				:closeModal="closeModal"
 			/>
 		</UModal>
 	</div>
@@ -29,13 +34,21 @@ import type { SidePanel } from '@/utils/types'
 const app = useApp()
 const section = ref('addFiles')
 const actionModal = ref(false)
+const deleteId = ref(-1)
 
 const initialModalValue = { delete: false, update: false, confirm: false }
 
 const modalActions = reactive(initialModalValue)
 
-const closeModal = () => {
-	Object.assign(modalActions, initialModalValue)
+const deleteSong = (id: number) => {
+	deleteId.value = id
+	modalActions.delete = true
+	actionModal.value = true
+}
+
+const closeModal = (action: 'delete' | 'update' | 'confirm') => {
+	console.log(action)
+	modalActions[action] = false
 	actionModal.value = false
 }
 

@@ -35,7 +35,7 @@ export const useCreate = defineStore('create', () => {
 	}
 
 	const removeSong = (id: number) => {
-		list.value = list.value.splice(id, 1)
+		if (id >= 0 && id < list.value.length) list.value.splice(id, 1)
 	}
 
 	return { songData, songIndex, addSong, list, removeSong }

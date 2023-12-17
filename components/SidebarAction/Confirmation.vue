@@ -18,7 +18,11 @@
 		</div>
 		<template #footer>
 			<div class="w-full h-auto flex items-center justify-evenly">
-				<UButton label="Cancel" size="md" @click="cancelConfirmation" />
+				<UButton
+					label="Cancel"
+					size="md"
+					@click="() => cancelConfirmation('confirm')"
+				/>
 				<UButton label="Add Song" size="md" @click="addSong" />
 			</div>
 		</template>
@@ -30,6 +34,6 @@ const create = useCreate()
 const props = defineProps<{ cancelConfirmation: any }>()
 
 const addSong = () => {
-	if (create.addSong()) props.cancelConfirmation()
+	if (create.addSong()) props.cancelConfirmation('confirm')
 }
 </script>
