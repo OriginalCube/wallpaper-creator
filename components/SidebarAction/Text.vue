@@ -1,7 +1,7 @@
 <template>
 	<!-- Text -->
-	<div class="w-full h-auto flex flex-col gap-2 items-center justify-center">
-		<p class="text-xl font-medium w-full p-2 px-4">{{ data.name }}</p>
+	<div class="flex h-auto w-full flex-col items-center justify-center gap-2">
+		<p class="w-full p-2 px-4 text-xl font-medium">{{ data.name }}</p>
 		<UInput
 			v-model="create.songData[data.model]"
 			class="w-11/12 bg-preset-primary text-preset-semantics"

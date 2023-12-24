@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="w-full h-full flex flex-col items-center justify-center"
+		class="flex h-full w-full flex-col items-center justify-center"
 		:style="`background-color:${
 			create.songData.background
 				? create.songData.background
@@ -9,7 +9,7 @@
 	>
 		<WallpaperVisualizer />
 		<img
-			class="w-[550px] h-[550px] object-fill"
+			class="h-[550px] w-[550px] object-fill"
 			:src="
 				imageUrl.length
 					? imageUrl

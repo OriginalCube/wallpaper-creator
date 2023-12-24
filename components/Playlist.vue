@@ -1,30 +1,33 @@
 <template>
-	<UCard class="absolute top-36 right-4 w-80">
+	<UCard class="absolute right-4 top-36 w-80">
 		<template #header>
-			<div class="flex items-center justify-between">
+			<div class="flex items-center justify-between gap-2">
 				<p class="text-md">Playlist</p>
-				<UButton color="red" @click="app.displayPlaylist" />
+				<div class="flex items-center justify-center gap-4">
+					<div>
+						<UTooltip text="Sort"
+							><UButton color="green" @click="app.displayPlaylist" />
+						</UTooltip>
+					</div>
+					<div>
+						<UTooltip text="Exit"
+							><UButton color="red" @click="app.displayPlaylist" />
+						</UTooltip>
+					</div>
+				</div>
 			</div>
 		</template>
-		<div class="h-72 w-full flex flex-col gap-4">
+		<div class="flex h-72 w-full flex-col gap-4">
 			<div
 				class="flex items-center justify-center"
 				v-for="(song, index) in items"
 				:key="index"
 			>
-				<div class="flex items-center justify-between gap-2 w-full">
+				<div class="flex w-full items-center justify-between gap-2">
 					<p class="text-md w-auto">
 						{{ `${index + 1}. ${song.name}` }}
 					</p>
 					<div class="flex items-center justify-center gap-4">
-						<UTooltip text="Edit">
-							<UButton
-								icon="i-heroicons-pencil-square"
-								size="sm"
-								square
-								variant="solid"
-							/>
-						</UTooltip>
 						<UTooltip text="Delete">
 							<UButton
 								icon="i-heroicons-trash"

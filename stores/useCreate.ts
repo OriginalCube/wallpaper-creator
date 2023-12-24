@@ -29,7 +29,7 @@ export const useCreate = defineStore('create', () => {
 			songData.value = { ...initialValue }
 			return true
 		} else {
-			toast.add({ title: 'Complete all fields.' })
+			toast.add({ title: 'Warning!', description: 'Complete all fields.' })
 		}
 		return false
 	}
@@ -38,5 +38,11 @@ export const useCreate = defineStore('create', () => {
 		if (id >= 0 && id < list.value.length) list.value.splice(id, 1)
 	}
 
-	return { songData, songIndex, addSong, list, removeSong }
+	return {
+		songData,
+		songIndex,
+		addSong,
+		list,
+		removeSong,
+	}
 })

@@ -1,13 +1,13 @@
 <template>
 	<div
 		ref="visualizerRef"
-		class="w-[550px] h-28 flex items-end justify-between"
+		class="flex h-28 w-[550px] items-end justify-between"
 	>
 		<div
 			v-for="n in 32"
 			ref="line"
 			:key="n"
-			class="text-white bg-white"
+			class="bg-white text-white"
 			:style="`width: ${lineWidth}px; marginRight: ${lineWidth}px; height: ${
 				lineHeight * Math.random()
 			}px; background-color:${

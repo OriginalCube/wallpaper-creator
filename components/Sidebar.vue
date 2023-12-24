@@ -1,7 +1,7 @@
 <template>
-	<div class="w-1/3 h-full">
+	<div class="h-full w-1/3">
 		<EditModal />
-		<div class="w-full h-full flex items-center">
+		<div class="flex h-full w-full items-center">
 			<EditSidePanel :data="SidePanelActions[app.sideContent]" />
 			<EditSideAction
 				v-if="section.length"
@@ -12,7 +12,7 @@
 		<Playlist
 			v-if="app.playlist"
 			:deleteSong="deleteSong"
-			:updateSong="() => (modalActions.update = true)"
+			:updateSong="simpleModalUpdate"
 		/>
 
 		<UModal v-model="actionModal" preventClose>
@@ -25,6 +25,13 @@
 				:deleteId="deleteId"
 				:closeModal="closeModal"
 			/>
+			<SidebarActionSimpleModal
+				v-if="modalActions.simple"
+				:header="simpleModalData.header"
+				:subtitle="simpleModalData.subtitle"
+				:action="simpleModalData.action"
+				:close-modal="closeModal"
+			/>
 		</UModal>
 	</div>
 </template>
@@ -32,11 +39,17 @@
 <script lang="ts" setup>
 import type { SidePanel } from '@/utils/types'
 const app = useApp()
+const create = useCreate()
 const section = ref('addFiles')
 const actionModal = ref(false)
 const deleteId = ref(-1)
 
-const initialModalValue = { delete: false, update: false, confirm: false }
+const initialModalValue = {
+	delete: false,
+	update: false,
+	confirm: false,
+	simple: false,
+}
 
 const modalActions = reactive(initialModalValue)
 
@@ -46,11 +59,16 @@ const deleteSong = (id: number) => {
 	actionModal.value = true
 }
 
-const closeModal = (action: 'delete' | 'update' | 'confirm') => {
-	console.log(action)
+const closeModal = (action: 'delete' | 'update' | 'confirm' | 'simple') => {
 	modalActions[action] = false
 	actionModal.value = false
 }
+
+const simpleModalData = reactive({
+	header: '',
+	subtitle: '',
+	action: () => {},
+})
 
 const SidePanelActions: SidePanel = {
 	add: {
